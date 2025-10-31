@@ -1,0 +1,22 @@
+{
+  "name": "storybook",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "lint": "eslint \"src/**/*.{ts,tsx}\""
+  },
+  "dependencies": {
+    "@kanso-ui/styles": "workspace:*",
+    "@kanso-ui/tokens": "workspace:*",
+    "@kanso-ui/ui": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "storybook": "8.1.10"
+  }
+}
+

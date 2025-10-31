@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": ["packages/**/*", "apps/**/*", "*.ts", "*.tsx"],
+  "exclude": ["node_modules", "dist", "storybook-static"]
+}
+

@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/blocks';
+import { lightTheme } from '@kanso-ui/tokens';
+
+<Meta title="Fundamentos/Tokens" />
+
+# Tokens de diseño
+
+Los tokens permiten mantener la consistencia visual de todos los componentes y
+facilitan crear temas personalizados. Se publican como variables CSS para que
+puedan consumirse tanto en React como en cualquier otra superficie.
+
+## Paleta neutral
+
+```jsx
+{JSON.stringify(lightTheme.tokens.color.neutral, null, 2)}
+```
+
+## Espaciado
+
+```jsx
+{JSON.stringify(lightTheme.tokens.spacing, null, 2)}
+```
+
+## Tipografía
+
+```jsx
+{JSON.stringify(lightTheme.tokens.typography, null, 2)}
+```
+
+## Cómo usar variables CSS
+
+```ts
+import { cssVar } from '@kanso-ui/tokens';
+
+const estilo = {
+  padding: cssVar(['spacing', '4']),
+  background: cssVar(['color', 'semantic', 'surface'])
+};
+```
+

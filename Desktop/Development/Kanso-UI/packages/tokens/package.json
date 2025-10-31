@@ -1,0 +1,35 @@
+{
+  "name": "@kanso-ui/tokens",
+  "version": "0.1.0",
+  "description": "Design tokens for the Kanso UI component library.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "test": "cross-env VITEST_SCOPE=tokens vitest run --config ../../vitest.config.ts"
+  },
+  "keywords": [
+    "design-tokens",
+    "theming",
+    "kanso-ui"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {},
+  "dependencies": {}
+}
+

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": [
+      "vitest/globals",
+      "@testing-library/jest-dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@kanso-ui/tokens": ["packages/tokens/src"],
+      "@kanso-ui/ui": ["packages/ui/src"],
+      "@kanso-ui/styles": ["packages/styles/src"],
+      "@kanso-ui/*": ["packages/*/src"]
+    }
+  },
+  "include": ["packages/**/*", "apps/**/*", "*.ts", "*.tsx"],
+  "exclude": ["node_modules", "dist", "build"]
+}
+

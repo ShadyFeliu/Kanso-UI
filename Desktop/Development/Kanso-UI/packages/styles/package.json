@@ -1,0 +1,39 @@
+{
+  "name": "@kanso-ui/styles",
+  "version": "0.1.0",
+  "description": "Utility helpers and theming runtime for Kanso UI.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "test": "cross-env VITEST_SCOPE=styles vitest run --config ../../vitest.config.ts"
+  },
+  "keywords": [
+    "css-variables",
+    "design-tokens",
+    "theming"
+  ],
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "dependencies": {
+    "@kanso-ui/tokens": "workspace:*"
+  }
+}
+
