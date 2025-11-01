@@ -55,3 +55,20 @@ export const EtiquetaOculta: Story = {
   }
 };
 
+const IconMail = () => <span aria-hidden="true">📧</span>;
+const IconCheck = () => <span aria-hidden="true">✔</span>;
+
+export const ConIconos: Story = {
+  render: (args) => (
+    <Input
+      {...args}
+      startIcon={<IconMail />}
+      endIcon={<IconCheck />}
+    />
+  ),
+  args: {
+    validationState: 'success',
+    errorMessage: 'Correo verificado'
+  }
+};
+

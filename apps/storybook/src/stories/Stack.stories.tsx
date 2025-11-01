@@ -7,7 +7,7 @@ const meta: Meta<typeof Stack> = {
   component: Stack,
   args: {
     direction: 'row',
-    gap: '4',
+    gap: 'md',
     align: 'center',
     children: (
       <>
@@ -24,7 +24,7 @@ const meta: Meta<typeof Stack> = {
     },
     gap: {
       control: 'select',
-      options: ['2', '3', '4', '5', '6', '8']
+      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '2', '3', '4', '5', '6', '7', '8', '9']
     },
     align: {
       control: 'select',
@@ -56,5 +56,20 @@ export const Vertical: Story = {
       </>
     )
   }
+};
+
+export const Presets: Story = {
+  render: () => (
+    <Stack.Vertical gap="lg">
+      <Stack.Horizontal gap="sm">
+        <Button variant="solid">Guardar</Button>
+        <Button variant="ghost">Cancelar</Button>
+      </Stack.Horizontal>
+      <Stack.Horizontal gap="xs" align="baseline">
+        <Card padding="sm">Fila 1</Card>
+        <Card padding="sm">Fila 2</Card>
+      </Stack.Horizontal>
+    </Stack.Vertical>
+  )
 };
 

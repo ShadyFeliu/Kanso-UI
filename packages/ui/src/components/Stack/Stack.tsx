@@ -1,7 +1,6 @@
-import type { CSSProperties, HTMLAttributes, ReactNode } from 'react';
+import { forwardRef, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react';
 
 import { atoms, mergeAtoms, cx, type AtomProps } from '@kanso-ui/styles';
-import type { SpacingScaleKey } from '@kanso-ui/tokens';
 
 type Align = 'start' | 'center' | 'end' | 'stretch' | 'baseline';
 type Justify = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
@@ -25,7 +24,7 @@ const justifyToCss: Record<Justify, AtomProps['justify']> = {
 
 export interface StackProps extends HTMLAttributes<HTMLDivElement> {
   direction?: AtomProps['direction'];
-  gap?: SpacingScaleKey;
+  gap?: AtomProps['gap'];
   align?: Align;
   justify?: Justify;
   wrap?: AtomProps['wrap'];
@@ -34,10 +33,10 @@ export interface StackProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-export const Stack = (props: StackProps) => {
+const BaseStack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
   const {
     direction = 'column',
-    gap = '4',
+    gap = 'md',
     align,
     justify,
     wrap,
@@ -46,6 +45,7 @@ export const Stack = (props: StackProps) => {
     children,
     ...rest
   } = props;
+
   const stackAtoms = atoms({
     display: 'flex',
     direction,
@@ -57,6 +57,7 @@ export const Stack = (props: StackProps) => {
 
   return (
     <div
+      ref={ref}
       className={cx('kanso-stack', className)}
       style={mergeAtoms(stackAtoms, style ?? undefined) as CSSProperties}
       {...rest}
@@ -64,5 +65,23 @@ export const Stack = (props: StackProps) => {
       {children}
     </div>
   );
-};
+});
+
+BaseStack.displayName = 'Stack';
+
+const createPreset = (presetProps: Partial<StackProps>) =>
+  forwardRef<HTMLDivElement, StackProps>((props, ref) => (
+    <BaseStack ref={ref} {...presetProps} {...props} />
+  ));
+
+const StackHorizontal = createPreset({ direction: 'row', align: 'center' });
+StackHorizontal.displayName = 'Stack.Horizontal';
+
+const StackVertical = createPreset({ direction: 'column' });
+StackVertical.displayName = 'Stack.Vertical';
+
+export const Stack = Object.assign(BaseStack, {
+  Horizontal: StackHorizontal,
+  Vertical: StackVertical
+});
 

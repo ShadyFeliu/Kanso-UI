@@ -21,27 +21,31 @@ type LayoutJustify =
 
 type SemanticColorKey = keyof SemanticColorTokens;
 
+type SemanticSpacing = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+
+type SpacingToken = SpacingScaleKey | SemanticSpacing;
+
 export type AtomProps = {
   display?: 'block' | 'inline-block' | 'flex' | 'inline-flex' | 'grid';
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   align?: LayoutAlign;
   justify?: LayoutJustify;
   wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
-  gap?: SpacingScaleKey;
-  p?: SpacingScaleKey;
-  px?: SpacingScaleKey;
-  py?: SpacingScaleKey;
-  pt?: SpacingScaleKey;
-  pr?: SpacingScaleKey;
-  pb?: SpacingScaleKey;
-  pl?: SpacingScaleKey;
-  m?: SpacingScaleKey;
-  mx?: SpacingScaleKey;
-  my?: SpacingScaleKey;
-  mt?: SpacingScaleKey;
-  mr?: SpacingScaleKey;
-  mb?: SpacingScaleKey;
-  ml?: SpacingScaleKey;
+  gap?: SpacingToken;
+  p?: SpacingToken;
+  px?: SpacingToken;
+  py?: SpacingToken;
+  pt?: SpacingToken;
+  pr?: SpacingToken;
+  pb?: SpacingToken;
+  pl?: SpacingToken;
+  m?: SpacingToken;
+  mx?: SpacingToken;
+  my?: SpacingToken;
+  mt?: SpacingToken;
+  mr?: SpacingToken;
+  mb?: SpacingToken;
+  ml?: SpacingToken;
   radius?: RadiusScaleKey;
   shadow?: ShadowScaleKey;
   bg?: SemanticColorKey;
@@ -56,13 +60,28 @@ export type AtomProps = {
   maxHeight?: string;
 };
 
-const spacingToStyle = (
-  style: AtomicStyle,
-  token: SpacingScaleKey | undefined,
-  properties: string[]
-) => {
-  if (!token) return;
-  const value = cssVar(['spacing', token]);
+const semanticSpacingMap: Record<SemanticSpacing, SpacingScaleKey> = {
+  xs: '2',
+  sm: '3',
+  md: '4',
+  lg: '6',
+  xl: '7',
+  '2xl': '9',
+  '3xl': '12'
+};
+
+const resolveSpacingToken = (token?: SpacingToken): SpacingScaleKey | undefined => {
+  if (!token) return undefined;
+  if (token in semanticSpacingMap) {
+    return semanticSpacingMap[token as SemanticSpacing];
+  }
+  return token as SpacingScaleKey;
+};
+
+const spacingToStyle = (style: AtomicStyle, token: SpacingToken | undefined, properties: string[]) => {
+  const resolved = resolveSpacingToken(token);
+  if (!resolved) return;
+  const value = cssVar(['spacing', resolved]);
   properties.forEach((property) => {
     style[property] = value;
   });

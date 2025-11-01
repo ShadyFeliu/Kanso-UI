@@ -16,5 +16,23 @@ describe('Stack', () => {
     expect(stack).toHaveStyle({ display: 'flex', flexDirection: 'row' });
     expect(within(stack).getAllByText(/Uno|Dos/)).toHaveLength(2);
   });
+
+  it('exposes horizontal and vertical presets', () => {
+    render(
+      <Stack.Horizontal data-testid="horizontal" gap="lg">
+        <span>A</span>
+        <span>B</span>
+      </Stack.Horizontal>
+    );
+
+    render(
+      <Stack.Vertical data-testid="vertical">
+        <span>C</span>
+      </Stack.Vertical>
+    );
+
+    expect(screen.getByTestId('horizontal')).toHaveStyle({ flexDirection: 'row' });
+    expect(screen.getByTestId('vertical')).toHaveStyle({ flexDirection: 'column' });
+  });
 });
 

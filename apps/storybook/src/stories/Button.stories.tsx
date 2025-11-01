@@ -56,3 +56,28 @@ export const AbarcaAncho: Story = {
   }
 };
 
+const IconSparkles = () => <span aria-hidden="true">✨</span>;
+const IconArrow = () => <span aria-hidden="true">↗</span>;
+
+export const ConIconos: Story = {
+  render: (args) => (
+    <Button
+      {...args}
+      startIcon={<IconSparkles />}
+      endIcon={<IconArrow />}
+    >
+      {args.children ?? 'Acción con iconos'}
+    </Button>
+  )
+};
+
+export const SoloIcono: Story = {
+  render: (args) => (
+    <Button
+      {...args}
+      startIcon={<IconSparkles />}
+      aria-label="Favorito"
+    />
+  )
+};
+

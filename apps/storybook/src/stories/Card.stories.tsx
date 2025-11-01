@@ -19,11 +19,11 @@ const meta: Meta<typeof Card> = {
   argTypes: {
     variant: {
       control: 'inline-radio',
-      options: ['surface', 'outline', 'elevated']
+      options: ['surface', 'outline', 'elevated', 'interactive']
     },
     padding: {
       control: 'inline-radio',
-      options: ['none', 'sm', 'md', 'lg']
+      options: ['none', 'sm', 'md', 'lg', 'xl']
     }
   }
 };
@@ -43,6 +43,13 @@ export const Contorno: Story = {
 export const Elevada: Story = {
   args: {
     variant: 'elevated'
+  }
+};
+
+export const Interactiva: Story = {
+  args: {
+    variant: 'interactive',
+    padding: 'lg'
   }
 };
 
