@@ -27,5 +27,18 @@ describe('Input', () => {
     expect(screen.getByText(/obligatorio/i)).toBeVisible();
     expect(screen.getByText(/nombre completo/i)).toBeVisible();
   });
+
+  it('renders optional decorators', () => {
+    render(
+      <Input
+        label="Usuario"
+        startIcon={<span data-testid="start">@</span>}
+        endIcon={<span data-testid="end">✅</span>}
+      />
+    );
+
+    expect(screen.getByTestId('start')).toBeInTheDocument();
+    expect(screen.getByTestId('end')).toBeInTheDocument();
+  });
 });
 

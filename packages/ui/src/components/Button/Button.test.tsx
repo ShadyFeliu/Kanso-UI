@@ -33,5 +33,24 @@ describe('Button', () => {
     expect(button).toHaveAttribute('data-size', 'lg');
     expect(button).toHaveAttribute('data-full-width', 'true');
   });
+
+  it('renders start and end icons and icon-only state', () => {
+    render(
+      <Button
+        startIcon={<span data-testid="start-icon">⤴</span>}
+        endIcon={<span data-testid="end-icon">↗</span>}
+      >
+        Navegar
+      </Button>
+    );
+
+    expect(screen.getByTestId('start-icon')).toBeInTheDocument();
+    expect(screen.getByTestId('end-icon')).toBeInTheDocument();
+
+    render(<Button startIcon={<span data-testid="icon-only">★</span>} aria-label="Favorito" />);
+
+    const iconOnlyButton = screen.getByRole('button', { name: /favorito/i });
+    expect(iconOnlyButton).toHaveAttribute('data-icon-only', 'true');
+  });
 });
 

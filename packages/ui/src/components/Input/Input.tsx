@@ -1,7 +1,8 @@
 import {
   forwardRef,
   type InputHTMLAttributes,
-  useId
+  useId,
+  type ReactNode
 } from 'react';
 
 import { cx } from '@kanso-ui/styles';
@@ -16,6 +17,8 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   errorMessage?: string;
   validationState?: InputValidationState;
   hideLabel?: boolean;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
 }
 
 const styles = `
@@ -64,6 +67,14 @@ const styles = `
     background-color var(--k-motion-duration-fast, 150ms) ease;
 }
 
+.kanso-input__field[data-has-start-icon='true'] {
+  padding-left: calc(var(--k-spacing-4, 1rem) + 1.5rem);
+}
+
+.kanso-input__field[data-has-end-icon='true'] {
+  padding-right: calc(var(--k-spacing-4, 1rem) + 1.5rem);
+}
+
 .kanso-input__field::placeholder {
   color: var(--k-color-semantic-text-secondary, #475569);
   opacity: 0.7;
@@ -71,7 +82,7 @@ const styles = `
 
 .kanso-field[data-state='default'] .kanso-input__field:focus-visible {
   border-color: var(--k-color-semantic-focus-ring, #6366f1);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
   outline: none;
 }
 
@@ -110,6 +121,26 @@ const styles = `
 .kanso-field[data-state='warning'] .kanso-field__message {
   color: var(--k-color-semantic-warning, #f59e0b);
 }
+
+.kanso-input__decorator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--k-color-semantic-text-secondary, #475569);
+  pointer-events: none;
+  font-size: 1rem;
+}
+
+.kanso-input__decorator--start {
+  left: var(--k-spacing-4, 1rem);
+}
+
+.kanso-input__decorator--end {
+  right: var(--k-spacing-4, 1rem);
+}
 `;
 
 registerStyles('input', styles);
@@ -125,6 +156,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       hideLabel = false,
       type = 'text',
       className,
+      startIcon,
+      endIcon,
       ...props
     },
     ref
@@ -155,6 +188,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         ) : null}
 
         <div className="kanso-input__wrapper">
+          {startIcon ? (
+            <span className="kanso-input__decorator kanso-input__decorator--start" aria-hidden="true">
+              {startIcon}
+            </span>
+          ) : null}
           <input
             ref={ref}
             id={inputId}
@@ -162,8 +200,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             className="kanso-input__field"
             aria-invalid={validationState === 'error' ? 'true' : undefined}
             aria-describedby={describedBy || undefined}
+            data-has-start-icon={startIcon ? 'true' : undefined}
+            data-has-end-icon={endIcon ? 'true' : undefined}
             {...props}
           />
+          {endIcon ? (
+            <span className="kanso-input__decorator kanso-input__decorator--end" aria-hidden="true">
+              {endIcon}
+            </span>
+          ) : null}
         </div>
 
         {description ? (

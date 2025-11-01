@@ -17,5 +17,16 @@ describe('Card', () => {
     );
     expect(screen.getByTestId('card')).toHaveAttribute('data-variant', 'elevated');
   });
+
+  it('supports interactive variant and hover control', () => {
+    render(
+      <Card variant="interactive" hoverable={false} data-testid="interactive">
+        Interactivo
+      </Card>
+    );
+    const card = screen.getByTestId('interactive');
+    expect(card).toHaveAttribute('data-variant', 'interactive');
+    expect(card).not.toHaveAttribute('data-hoverable');
+  });
 });
 
