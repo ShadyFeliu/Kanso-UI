@@ -21,9 +21,9 @@
   - [ ] Publicación npm vía GitHub Actions
   - [ ] Linting + Prettier configurado
   - [ ] GitHub templates (issues / PR)
-- [ ] **Sistema avanzado de tokens de diseño**
+- [x] **Sistema avanzado de tokens de diseño**
   - Tipografía
-  - Radii
+  - Radio
   - Espaciado
   - Colores
   - Sombras
