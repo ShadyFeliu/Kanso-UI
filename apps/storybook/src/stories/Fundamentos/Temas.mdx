@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Fundamentos/Temas" />
+
+# Temas y modo oscuro
+
+La librería incluye dos temas listos para usar:
+
+- **kanso-light** — pensado para productos claros con alto contraste.
+- **kanso-dark** — ajustado con superficies translúcidas y bordes suaves.
+
+Puedes alternar el modo desde la toolbar de Storybook (icono de luna/sol). Internamente se aplican los tokens vía `KansoProvider`, por lo que basta con envolver tu aplicación:
+
+```tsx
+import { KansoProvider } from '@kanso-ui/ui';
+import { darkTheme, lightTheme } from '@kanso-ui/tokens';
+
+export function App({ children, mode = 'light' }) {
+  const theme = mode === 'dark' ? darkTheme : lightTheme;
+
+  return <KansoProvider theme={theme}>{children}</KansoProvider>;
+}
+```
+
+> Consejo: Combina el provider con `matchMedia('(prefers-color-scheme: dark)')` para adoptar automáticamente el modo del sistema operativo.
+
+## Tokens relevantes
+
+- `--k-color-semantic-background`
+- `--k-color-semantic-surface`
+- `--k-color-semantic-primary`
+- `--k-color-semantic-focus-ring`
+
+Al definir nuevos temas, reutiliza los tokens base mediante `createTheme` y sobrescribe únicamente los valores necesarios.
+
