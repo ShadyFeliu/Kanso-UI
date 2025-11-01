@@ -69,16 +69,16 @@ const BaseStack = forwardRef<HTMLDivElement, StackProps>((props, ref) => {
 
 BaseStack.displayName = 'Stack';
 
-const createPreset = (presetProps: Partial<StackProps>) =>
-  forwardRef<HTMLDivElement, StackProps>((props, ref) => (
+const createPreset = (name: string, presetProps: Partial<StackProps>) => {
+  const Component = forwardRef<HTMLDivElement, StackProps>((props, ref) => (
     <BaseStack ref={ref} {...presetProps} {...props} />
   ));
+  Component.displayName = name;
+  return Component;
+};
 
-const StackHorizontal = createPreset({ direction: 'row', align: 'center' });
-StackHorizontal.displayName = 'Stack.Horizontal';
-
-const StackVertical = createPreset({ direction: 'column' });
-StackVertical.displayName = 'Stack.Vertical';
+const StackHorizontal = createPreset('Stack.Horizontal', { direction: 'row', align: 'center' });
+const StackVertical = createPreset('Stack.Vertical', { direction: 'column' });
 
 export const Stack = Object.assign(BaseStack, {
   Horizontal: StackHorizontal,

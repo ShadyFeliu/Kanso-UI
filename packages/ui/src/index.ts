@@ -13,3 +13,9 @@ export type { StackProps } from './components/Stack/Stack';
 export { KansoProvider } from './theme/KansoProvider';
 export { useTheme } from '@kanso-ui/styles';
 
+export { Flex } from './components/Layout/Flex';
+export type { FlexProps } from './components/Layout/Flex';
+
+export { Grid } from './components/Layout/Grid';
+export type { GridProps } from './components/Layout/Grid';
+
