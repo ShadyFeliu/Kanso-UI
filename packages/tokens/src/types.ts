@@ -1,4 +1,19 @@
-export type ColorScaleKey = 25 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950;
+export type ColorScaleKey =
+  | 10
+  | 25
+  | 50
+  | 75
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 950
+  | 975;
 
 export type ColorScale = Record<ColorScaleKey, string>;
 
@@ -27,10 +42,14 @@ export type SpacingScaleKey =
   | '4'
   | '5'
   | '6'
+  | '7'
   | '8'
+  | '9'
   | '10'
   | '12'
+  | '14'
   | '16'
+  | '18'
   | '20'
   | '24';
 
@@ -42,9 +61,9 @@ export type RadiusScale = Record<RadiusScaleKey, string>;
 export type ShadowScaleKey = 'none' | 'xs' | 'sm' | 'md' | 'lg';
 export type ShadowScale = Record<ShadowScaleKey, string>;
 
-export type FontSizeKey = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export type FontSizeKey = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
 export type FontWeightKey = 'regular' | 'medium' | 'semibold' | 'bold';
-export type LineHeightKey = 'tight' | 'snug' | 'normal' | 'relaxed';
+export type LineHeightKey = 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose';
 
 export type TypographyTokens = {
   fontFamily: string;
@@ -54,8 +73,8 @@ export type TypographyTokens = {
   letterSpacings: Record<FontSizeKey, string>;
 };
 
-export type MotionDurationKey = 'instant' | 'fast' | 'normal' | 'slow';
-export type MotionEasingKey = 'standard' | 'emphasized' | 'decelerate';
+export type MotionDurationKey = 'micro' | 'instant' | 'fast' | 'normal' | 'slow' | 'lazy';
+export type MotionEasingKey = 'standard' | 'emphasized' | 'decelerate' | 'elastic';
 
 export type MotionTokens = {
   duration: Record<MotionDurationKey, string>;

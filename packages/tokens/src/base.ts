@@ -1,89 +1,105 @@
 import { DesignTokens, TokenTheme } from './types';
 
 const neutral = {
-  25: '#fdfdfd',
-  50: '#f8fafc',
-  100: '#f1f5f9',
-  200: '#e2e8f0',
-  300: '#cbd5f5',
-  400: '#94a3b8',
-  500: '#64748b',
-  600: '#475569',
-  700: '#334155',
-  800: '#1e293b',
-  900: '#0f172a',
-  950: '#020617'
+  10: '#fcfcfd',
+  25: '#f7f8fb',
+  50: '#f0f2f8',
+  75: '#e7eaf3',
+  100: '#dee2ec',
+  200: '#c9cfdd',
+  300: '#b2bacd',
+  400: '#919bb3',
+  500: '#707894',
+  600: '#565e74',
+  700: '#41485b',
+  800: '#2d3342',
+  900: '#1f2430',
+  950: '#141722',
+  975: '#0c0e16'
 } as const;
 
 const primary = {
-  25: '#f5f8ff',
-  50: '#eef2ff',
-  100: '#e0e7ff',
-  200: '#c7d2fe',
-  300: '#a5b4fc',
-  400: '#818cf8',
-  500: '#6366f1',
-  600: '#4f46e5',
-  700: '#4338ca',
-  800: '#3730a3',
-  900: '#312e81',
-  950: '#1e1b4b'
+  10: '#f7f7ff',
+  25: '#eff1ff',
+  50: '#e0e5ff',
+  75: '#cbd4ff',
+  100: '#b4c2ff',
+  200: '#95a9ff',
+  300: '#788fff',
+  400: '#5f73f4',
+  500: '#4959e6',
+  600: '#3844c7',
+  700: '#2d38a2',
+  800: '#242e83',
+  900: '#1e2568',
+  950: '#151a4b',
+  975: '#10133a'
 } as const;
 
 const success = {
-  25: '#f2fdf6',
-  50: '#dcfce7',
-  100: '#bbf7d0',
-  200: '#86efac',
-  300: '#4ade80',
-  400: '#22c55e',
-  500: '#16a34a',
-  600: '#15803d',
-  700: '#166534',
-  800: '#14532d',
-  900: '#166534',
-  950: '#052e16'
+  10: '#f0fdf7',
+  25: '#e3fcec',
+  50: '#d1fadf',
+  75: '#b7f4cc',
+  100: '#9fedba',
+  200: '#78e29c',
+  300: '#4ed47b',
+  400: '#2abb62',
+  500: '#1c9c4f',
+  600: '#187e41',
+  700: '#156636',
+  800: '#134f2c',
+  900: '#0f3a21',
+  950: '#0a2917',
+  975: '#05190d'
 } as const;
 
 const warning = {
-  25: '#fffdf4',
-  50: '#fef3c7',
-  100: '#fde68a',
-  200: '#fcd34d',
-  300: '#fbbf24',
-  400: '#f59e0b',
-  500: '#d97706',
-  600: '#b45309',
-  700: '#92400e',
-  800: '#78350f',
-  900: '#451a03',
-  950: '#2c1502'
+  10: '#fffaf1',
+  25: '#fff4df',
+  50: '#ffe7ba',
+  75: '#ffd993',
+  100: '#ffcc6d',
+  200: '#fdb347',
+  300: '#f29324',
+  400: '#dd7712',
+  500: '#bd5e0c',
+  600: '#974a0e',
+  700: '#7a3b11',
+  800: '#5f2d10',
+  900: '#3f1f0a',
+  950: '#2b1606',
+  975: '#210f04'
 } as const;
 
 const danger = {
-  25: '#fff5f5',
-  50: '#fee2e2',
-  100: '#fecaca',
-  200: '#fca5a5',
-  300: '#f87171',
-  400: '#ef4444',
-  500: '#dc2626',
-  600: '#b91c1c',
-  700: '#991b1b',
-  800: '#7f1d1d',
-  900: '#450a0a',
-  950: '#300505'
+  10: '#fff6f6',
+  25: '#ffe7e7',
+  50: '#ffcfcf',
+  75: '#ffb4b4',
+  100: '#ff9a9a',
+  200: '#ff7a7a',
+  300: '#f75b5b',
+  400: '#e23f3f',
+  500: '#c82828',
+  600: '#a12121',
+  700: '#821c1c',
+  800: '#661717',
+  900: '#401010',
+  950: '#2e0b0b',
+  975: '#1e0606'
 } as const;
 
 const typography = {
   fontFamily: '"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
   sizes: {
-    xs: '0.75rem',
-    sm: '0.875rem',
-    md: '1rem',
-    lg: '1.125rem',
-    xl: '1.25rem',
-    '2xl': '1.5rem'
+    xs: 'clamp(0.72rem, 0.7rem + 0.2vw, 0.78rem)',
+    sm: 'clamp(0.82rem, 0.8rem + 0.2vw, 0.9rem)',
+    md: 'clamp(0.98rem, 0.95rem + 0.25vw, 1.05rem)',
+    lg: 'clamp(1.12rem, 1.05rem + 0.3vw, 1.2rem)',
+    xl: 'clamp(1.26rem, 1.2rem + 0.4vw, 1.4rem)',
+    '2xl': 'clamp(1.5rem, 1.4rem + 0.5vw, 1.7rem)',
+    '3xl': 'clamp(1.85rem, 1.6rem + 0.8vw, 2.1rem)'
   },
   weights: {
     regular: 400,
@@ -92,18 +108,20 @@ const typography = {
     bold: 700
   },
   lineHeights: {
-    tight: '1.2',
-    snug: '1.35',
-    normal: '1.5',
-    relaxed: '1.75'
+    tight: '1.18',
+    snug: '1.32',
+    normal: '1.48',
+    relaxed: '1.68',
+    loose: '1.9'
   },
   letterSpacings: {
     xs: '0.02em',
-    sm: '0em',
-    md: '-0.01em',
-    lg: '-0.015em',
-    xl: '-0.02em',
-    '2xl': '-0.025em'
+    sm: '0.005em',
+    md: '-0.005em',
+    lg: '-0.01em',
+    xl: '-0.015em',
+    '2xl': '-0.02em',
+    '3xl': '-0.022em'
   }
 } as const;
 
@@ -116,10 +134,14 @@ const spacing = {
   '4': '1rem',
   '5': '1.25rem',
   '6': '1.5rem',
+  '7': '1.75rem',
   '8': '2rem',
+  '9': '2.25rem',
   '10': '2.5rem',
   '12': '3rem',
+  '14': '3.5rem',
   '16': '4rem',
+  '18': '4.5rem',
   '20': '5rem',
   '24': '6rem'
 } as const;
@@ -144,15 +166,18 @@ const shadow = {
 
 const motion = {
   duration: {
-    instant: '75ms',
+    micro: '50ms',
+    instant: '90ms',
     fast: '150ms',
-    normal: '250ms',
-    slow: '350ms'
+    normal: '220ms',
+    slow: '320ms',
+    lazy: '500ms'
   },
   easing: {
     standard: 'cubic-bezier(0.2, 0, 0, 1)',
-    emphasized: 'cubic-bezier(0.2, 0, 0, 1)',
-    decelerate: 'cubic-bezier(0.0, 0, 0.2, 1)'
+    emphasized: 'cubic-bezier(0.3, 0, 0, 1)',
+    decelerate: 'cubic-bezier(0.0, 0, 0.2, 1)',
+    elastic: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
   }
 } as const;
 
@@ -171,23 +196,23 @@ const lightSemantic = {
   background: neutral[25],
   surface: '#ffffff',
   surfaceSubtle: neutral[50],
-  surfaceStrong: neutral[200],
+  surfaceStrong: neutral[100],
   textPrimary: neutral[900],
   textSecondary: neutral[600],
   textOnPrimary: '#ffffff',
   border: neutral[200],
   focusRing: primary[400],
-  primary: primary[600],
+  primary: primary[500],
   success: success[500],
-  warning: warning[500],
+  warning: warning[400],
   danger: danger[500]
 } as const;
 
 const darkSemantic = {
-  background: neutral[950],
-  surface: neutral[900],
-  surfaceSubtle: neutral[800],
-  surfaceStrong: neutral[700],
+  background: neutral[975],
+  surface: neutral[950],
+  surfaceSubtle: 'rgba(36, 41, 54, 0.6)',
+  surfaceStrong: neutral[800],
   textPrimary: neutral[25],
   textSecondary: neutral[300],
   textOnPrimary: '#ffffff',
